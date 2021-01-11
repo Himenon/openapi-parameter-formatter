@@ -104,5 +104,5 @@ export const generate = (key: string | number, params: Parameter): string | unde
   if (params.style === "deepObject") {
     return generateDeepObjectParameter(key, params);
   }
-  return `${key}=`;
+  return undefined;
 };
