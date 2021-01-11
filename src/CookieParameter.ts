@@ -1,5 +1,5 @@
 import { PrimitiveType, ObjectType, ArrayType } from "./Types";
-import * as QueryParameter from "./QueryParameter";
+import * as Core from "./Core";
 
 export interface Parameter {
   value: PrimitiveType | ObjectType | ArrayType;
@@ -9,7 +9,7 @@ export interface Parameter {
 
 export const generate = (key: string | number, params: Parameter): string | undefined => {
   if (params.style === "form") {
-    return QueryParameter.generateFormParamter(key, params);
+    return Core.generateFormParamter(key, params);
   }
   return undefined;
 };

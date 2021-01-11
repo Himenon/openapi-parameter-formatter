@@ -43,12 +43,18 @@ export const isObject = (value: any): value is ObjectType => {
   if (isArray(value) || isPrimitive(value)) {
     return false;
   }
-  return true;
+  return typeof value === "object";
 };
 
-export const isEmpty = (value: any) => {
+export const isEmpty = (value: any): boolean => {
+  if (!value) {
+    return false;
+  }
   if (isArray(value)) {
     return value.length === 0;
+  }
+  if (isObject(value)) {
+    return Object.keys(value).length === 0;
   }
   return !value;
 };
