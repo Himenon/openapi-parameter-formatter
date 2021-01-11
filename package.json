@@ -4,9 +4,11 @@
   "private": true,
   "description": "Serializes OpenAPI parameter objects.",
   "keywords": [
-    "template",
-    "proxy directory",
-    "typescript"
+    "serialize-parameter",
+    "query parameter",
+    "path parameter",
+    "cookie parameter",
+    "header parameter"
   ],
   "homepage": "https://github.com/Himenon/openapi-parameter-formatter#readme",
   "bugs": {
