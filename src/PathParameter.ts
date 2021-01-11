@@ -10,8 +10,8 @@ export const generate = (key: string | number, params: Parameter): string | unde
   if (params.style === "matrix") {
     return Core.generateFromMatrix(key, params);
   }
-  // if (params.style === "label") {
-  //   return Core.generateFromLabel(key, params);
-  // }
+  if (params.style === "label") {
+    return Core.generateFromLabel(key, params);
+  }
   return undefined;
 };

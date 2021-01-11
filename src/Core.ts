@@ -1,5 +1,5 @@
 import {
-  // ParameterOfLabel,
+  ParameterOfLabel,
   ParameterOfMatrix,
   ParameterOfSimple,
   ParameterOfForm,
@@ -111,6 +111,28 @@ export const generateFromMatrix = (key: string | number, params: ParameterOfMatr
   return `;${key}`;
 };
 
-// export const generateFromLabel = (key: string | number, params: ParameterOfLabel): string | undefined => {
-
-// };
+export const generateFromLabel = (key: string | number, params: ParameterOfLabel): string | undefined => {
+  if (Guard.isEmpty(params.value)) {
+    return ".";
+  }
+  if (Guard.isPrimitive(params.value)) {
+    return `.${params.value}`;
+  }
+  if (Guard.isArray(params.value)) {
+    return `.${params.value.join(".")}`;
+  }
+  if (Guard.isObject(params.value)) {
+    if (params.explode) {
+      const value = Object.entries(params.value)
+        .map(([k, v]) => `${k}=${v}`)
+        .join(".");
+      return `.${value}`;
+    } else {
+      const value = Object.entries(params.value)
+        .map(([k, v]) => `${k}.${v}`)
+        .join(".");
+      return `.${value}`;
+    }
+  }
+  return ".";
+};
