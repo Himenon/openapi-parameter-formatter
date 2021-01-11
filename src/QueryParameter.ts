@@ -16,13 +16,13 @@ export interface ParameterOfSpaceDelimited {
 export interface ParameterOfPipeDelimited {
   value: ArrayType | ObjectType;
   style: "pipeDelimited";
-  explode: boolean;
+  explode: false;
 }
 
 export interface ParameterOfDeepObject {
   value: ObjectType;
   style: "deepObject";
-  explode: boolean;
+  explode: true;
 }
 
 export type Parameter = ParameterOfForm | ParameterOfSpaceDelimited | ParameterOfPipeDelimited | ParameterOfDeepObject;
@@ -69,6 +69,28 @@ export const generateSpaceDelimited = (key: string | number, params: ParameterOf
   return undefined;
 };
 
+export const generatePipeDelimitedParameter = (key: string | number, params: ParameterOfPipeDelimited): string | undefined => {
+  if (Guard.isArray(params.value)) {
+    return params.value.join("|");
+  }
+  if (Guard.isObject(params.value)) {
+    const value = Object.entries(params.value)
+      .map(([k, v]) => `${k}|${v}`)
+      .join("|");
+    return value;
+  }
+  return undefined;
+};
+
+export const generateDeepObjectParameter = (key: string | number, params: ParameterOfDeepObject): string | undefined => {
+  if (!Guard.isObject(params.value)) {
+    return undefined;
+  }
+  return Object.entries(params.value)
+    .map(([k, v]) => `${key}[${k}]=${v}`)
+    .join("&");
+};
+
 export const generate = (key: string | number, params: Parameter): string | undefined => {
   if (params.style === "form") {
     return generateFormParamter(key, params);
@@ -76,5 +98,11 @@ export const generate = (key: string | number, params: Parameter): string | unde
   if (params.style === "spaceDelimited") {
     return generateSpaceDelimited(key, params);
   }
-  return `${key}`;
+  if (params.style === "pipeDelimited") {
+    return generatePipeDelimitedParameter(key, params);
+  }
+  if (params.style === "deepObject") {
+    return generateDeepObjectParameter(key, params);
+  }
+  return `${key}=`;
 };

@@ -92,7 +92,7 @@ describe("QueryParameter - style:spaceDelimited", () => {
     });
     expect(result1).toBe("blue%20black%20brown");
   });
-  test("explode:false value:any[]", () => {
+  test("explode:false value:object", () => {
     const result1 = QueryParameter.generate("color", {
       value: {
         R: 100,
@@ -103,5 +103,43 @@ describe("QueryParameter - style:spaceDelimited", () => {
       explode: false,
     });
     expect(result1).toBe("R%20100%20G%20200%20B%20150");
+  });
+});
+
+describe("QueryParameter - style:pipeDelimited", () => {
+  test("explode:false value:any[]", () => {
+    const result1 = QueryParameter.generate("color", {
+      value: ["blue", "black", "brown"],
+      style: "pipeDelimited",
+      explode: false,
+    });
+    expect(result1).toBe("blue|black|brown");
+  });
+  test("explode:false value:object", () => {
+    const result1 = QueryParameter.generate("color", {
+      value: {
+        R: 100,
+        G: 200,
+        B: 150,
+      },
+      style: "pipeDelimited",
+      explode: false,
+    });
+    expect(result1).toBe("R|100|G|200|B|150");
+  });
+});
+
+describe("QueryParameter - style:deepObject", () => {
+  test("explode:true value:object", () => {
+    const result1 = QueryParameter.generate("color", {
+      value: {
+        R: 100,
+        G: 200,
+        B: 150,
+      },
+      style: "deepObject",
+      explode: true,
+    });
+    expect(result1).toBe("color[R]=100&color[G]=200&color[B]=150");
   });
 });
