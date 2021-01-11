@@ -10,7 +10,7 @@ export interface ParameterOfForm {
 export interface ParameterOfSpaceDelimited {
   value: ArrayType | ObjectType;
   style: "spaceDelimited";
-  explode: boolean;
+  explode: false;
 }
 
 export interface ParameterOfPipeDelimited {
@@ -56,9 +56,25 @@ export const generateFormParamter = (key: string | number, params: ParameterOfFo
   return `${key}=`;
 };
 
-export const generate = (key: string | number, params: Parameter): string => {
+export const generateSpaceDelimited = (key: string | number, params: ParameterOfSpaceDelimited): string | undefined => {
+  if (Guard.isArray(params.value)) {
+    return encodeURIComponent(params.value.join(" "));
+  }
+  if (Guard.isObject(params.value)) {
+    const value = Object.entries(params.value)
+      .map(([k, v]) => `${k} ${v}`)
+      .join(" ");
+    return encodeURIComponent(value);
+  }
+  return undefined;
+};
+
+export const generate = (key: string | number, params: Parameter): string | undefined => {
   if (params.style === "form") {
     return generateFormParamter(key, params);
+  }
+  if (params.style === "spaceDelimited") {
+    return generateSpaceDelimited(key, params);
   }
   return `${key}`;
 };
