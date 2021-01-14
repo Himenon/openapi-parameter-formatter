@@ -6,8 +6,11 @@ import {
   ParameterOfSpaceDelimited,
   ParameterOfPipeDelimited,
   ParameterOfDeepObject,
+  PrimitiveType,
+  ObjectType,
 } from "./Types";
 import * as Guard from "./Guard";
+import flatten from "flat";
 
 export const generateFromSimple = (key: string | number, params: ParameterOfSimple): string | undefined => {
   if (Guard.isArray(params.value)) {
@@ -75,8 +78,15 @@ export const generateDeepObjectParameter = (key: string | number, params: Parame
   if (!Guard.isObject(params.value)) {
     return undefined;
   }
-  return Object.entries(params.value)
-    .map(([k, v]) => `${key}[${k}]=${v}`)
+  const flatObject = flatten<ObjectType, { [key: string]: PrimitiveType }>(params.value);
+  return Object.entries(flatObject)
+    .map(([dotKeyName, primitiveValue]) => {
+      const nestedKey = dotKeyName
+        .split(".")
+        .map(k1 => `[${k1}]`)
+        .join("");
+      return `${[key]}${nestedKey}=${primitiveValue}`;
+    })
     .join("&");
 };
 
