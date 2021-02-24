@@ -1,5 +1,101 @@
 import * as PathParameter from "../PathParameter";
 
+describe("PathParameter - style:simple", () => {
+  test("explode:true/false value:empty", () => {
+    const result1 = PathParameter.generate("color", {
+      value: undefined,
+      style: "simple",
+      explode: false,
+    });
+    expect(result1).toBeUndefined();
+    const result2 = PathParameter.generate("color", {
+      value: undefined,
+      style: "simple",
+      explode: true,
+    });
+    expect(result2).toBeUndefined();
+  });
+
+  test("explode:true/false value:string", () => {
+    const result1 = PathParameter.generate("color", {
+      value: "blue",
+      style: "simple",
+      explode: false,
+    });
+    expect(result1).toBe("blue");
+    const result2 = PathParameter.generate("color", {
+      value: "blue",
+      style: "simple",
+      explode: true,
+    });
+    expect(result2).toBe("blue");
+  });
+
+  test("explode:true/false value:array", () => {
+    const result1 = PathParameter.generate("color", {
+      value: ["blue", "black", "brown"],
+      style: "simple",
+      explode: false,
+    });
+    expect(result1).toBe("blue,black,brown");
+    const result2 = PathParameter.generate("color", {
+      value: ["blue", "black", "brown"],
+      style: "simple",
+      explode: true,
+    });
+    expect(result2).toBe("blue,black,brown");
+    const result3 = PathParameter.generate("color", {
+      value: ["blue", undefined, "brown"],
+      style: "simple",
+      explode: true,
+    });
+    expect(result3).toBe("blue,brown");
+  });
+
+  test("explode:true/false value:object", () => {
+    const result1 = PathParameter.generate("color", {
+      value: {
+        R: 100,
+        G: 200,
+        B: 150,
+      },
+      style: "simple",
+      explode: false,
+    });
+    expect(result1).toBe("R,100,G,200,B,150");
+    const result2 = PathParameter.generate("color", {
+      value: {
+        R: 100,
+        G: 200,
+        B: 150,
+      },
+      style: "simple",
+      explode: true,
+    });
+    expect(result2).toBe("R=100,G=200,B=150");
+    const result3 = PathParameter.generate("color", {
+      value: {
+        R: 100,
+        G: undefined,
+        B: 150,
+      },
+      style: "simple",
+      explode: true,
+    });
+    expect(result3).toBe("R=100,G=,B=150");
+    const result4 = PathParameter.generate("color", {
+      value: {
+        R: 100,
+        G: undefined,
+        B: 150,
+      },
+      style: "simple",
+      explode: true,
+    });
+    expect(result4).toBe("R=100,G=,B=150");
+  });
+});
+
 describe("PathParameter - style:matrix", () => {
   test("explode:true/false value:empty", () => {
     const result1 = PathParameter.generate("color", {

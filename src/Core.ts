@@ -12,9 +12,26 @@ import {
 import * as Guard from "./Guard";
 import flatten from "flat";
 
+/**
+ * @see https://tools.ietf.org/html/rfc6570#section-3.2.2
+ */
 export const generateFromSimple = (key: string | number, params: ParameterOfSimple): string | undefined => {
   if (Guard.isArray(params.value)) {
-    return params.value.join(",");
+    return params.value.filter(Boolean).join(",");
+  }
+  if (Guard.isPrimitive(params.value)) {
+    return `${params.value}`;
+  }
+  if (Guard.isObject(params.value)) {
+    if (params.explode) {
+      return Object.entries(params.value)
+        .map(([key, value]) => `${key}=${value || ""}`)
+        .join(",");
+    } else {
+      return Object.entries(params.value)
+        .map(([key, value]) => `${key},${value || ""}`)
+        .join(",");
+    }
   }
   return undefined;
 };

@@ -19,7 +19,7 @@ export interface ParameterOfLabel {
 }
 
 export interface ParameterOfSimple {
-  value: ArrayType;
+  value: PrimitiveType | ArrayType | ObjectType;
   style: "simple";
   explode: boolean;
 }

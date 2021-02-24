@@ -17,16 +17,16 @@ describe("HeaderParameter - style:simple", () => {
   });
   test("explode:true/false value:not-array", () => {
     const result1 = HeaderParameter.generate("color", {
-      value: {} as any,
+      value: {},
       style: "simple",
       explode: false,
     });
-    expect(result1).toBe(undefined);
+    expect(result1).toBe("");
     const result2 = HeaderParameter.generate("color", {
-      value: "hoge" as any,
+      value: "hoge",
       style: "simple",
       explode: true,
     });
-    expect(result2).toBe(undefined);
+    expect(result2).toBe("hoge");
   });
 });
