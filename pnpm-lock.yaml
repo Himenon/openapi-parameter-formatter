@@ -7224,7 +7224,7 @@ packages:
     dependencies:
       agent-base: 6.0.2
       debug: 4.3.4
-      socks: 2.3.3
+      socks: 2.6.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -7238,14 +7238,6 @@ packages:
       socks: 2.6.2
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /socks/2.3.3:
-    resolution: { integrity: sha512-o5t52PCNtVdiOvzMry7wU4aOqYWL0PeCXRWBEiJow4/i/wr+wpsJQ9awEu1EonLIqsfGd5qSgDdxEOvCdmBEpA== }
-    engines: { node: ">= 6.0.0", npm: ">= 3.0.0" }
-    dependencies:
-      ip: 1.1.5
-      smart-buffer: 4.2.0
     dev: true
 
   /socks/2.6.2:
@@ -8201,7 +8193,7 @@ packages:
   /wide-align/1.1.5:
     resolution: { integrity: sha512-eDMORYaPNZ4sQIuuYPDHdQvf4gyCF9rEEV/yPxGfwPkRodwEgiMUUXTx/dex+Me0wxx53S+NgUHaP7y3MGlDmg== }
     dependencies:
-      string-width: 4.2.3
+      string-width: 1.0.2
     dev: true
 
   /word-wrap/1.2.3:
