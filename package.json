@@ -36,13 +36,12 @@
     "package.json"
   ],
   "scripts": {
-    "build": "yarn ts ./scripts/build.ts",
-    "clean": "yarn ts ./scripts/clean.ts",
+    "build": "pnpm ts ./scripts/build.ts",
+    "clean": "pnpm ts ./scripts/clean.ts",
     "format:code": "prettier \"**/*.{js,jsx,ts,tsx,json,yml,yaml,md,html}\" --write",
-    "format:yarn:lock": "yarn-deduplicate yarn.lock --strategy highest",
     "lerna:version:up": "lerna version --yes",
-    "release:github:registry": "yarn publish --registry https://npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}",
-    "release:npm:registry": "yarn publish",
+    "release:github:registry": "pnpm publish --registry https://npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}",
+    "release:npm:registry": "pnpm publish",
     "test": "run-s test:depcruise test:jest",
     "test:depcruise": "depcruise --validate .dependency-cruiser.js src",
     "test:jest": "jest -c ./jest.config.js",
