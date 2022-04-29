@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.0"></a>
+
+# 0.3.0 (2022-04-29)
+
+### Features
+
+- Serialize QueryParameter with URLSearchParams ([#12](https://github.com/Himenon/openapi-parameter-formatter/issues/12)) ([6048a0e](https://github.com/Himenon/openapi-parameter-formatter/commit/6048a0e))
+
 <a name="0.2.7"></a>
 
 ## 0.2.7 (2022-04-22)
