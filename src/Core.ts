@@ -36,6 +36,35 @@ export const generateFromSimple = (key: string | number, params: ParameterOfSimp
   return undefined;
 };
 
+export const generateFormParamterForCookie = (key: string | number, params: ParameterOfForm): string => {
+  if (Guard.isEmpty(params.value)) {
+    return `${key}=`;
+  }
+  if (Guard.isPrimitive(params.value)) {
+    return `${key}=${params.value}`;
+  }
+  if (Guard.isArray(params.value)) {
+    if (params.explode) {
+      return params.value.map(item => `${key}=${item}`).join("&");
+    } else {
+      return `${key}=${params.value.join(",")}`;
+    }
+  }
+  if (Guard.isObject(params.value)) {
+    if (params.explode) {
+      return Object.entries(params.value)
+        .map(([k, v]) => `${k}=${v}`)
+        .join("&");
+    } else {
+      const value = Object.entries(params.value)
+        .map(([k, v]) => `${k},${v}`)
+        .join(",");
+      return `${key}=${value}`;
+    }
+  }
+  return `${key}=`;
+};
+
 export const generateFormParamter = (key: string | number, params: ParameterOfForm): string => {
   return generateFormParamterAsURLSearchParams(key, params).toString();
 };

@@ -9,7 +9,7 @@ export interface Parameter {
 
 export const generate = (key: string | number, params: Parameter): string | undefined => {
   if (params.style === "form") {
-    return Core.generateFormParamter(key, params);
+    return Core.generateFormParamterForCookie(key, params);
   }
   return undefined;
 };
