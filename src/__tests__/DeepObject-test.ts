@@ -7,7 +7,7 @@ describe("QueryParameter - style:deepObject", () => {
       style: "deepObject",
       explode: true,
     });
-    expect(result1?.toString()).toBe(`filters%5Blevel1%5D%5Blevel2%5D=hello`);
+    expect(result1).toBe(`filters%5Blevel1%5D%5Blevel2%5D=hello`);
   });
   test("explode:true / nest value", () => {
     const result1 = QueryParameter.generate("filters", {
@@ -15,7 +15,7 @@ describe("QueryParameter - style:deepObject", () => {
       style: "deepObject",
       explode: true,
     });
-    expect(result1?.toString()).toBe(`filters%5Blevel1%5D%5Blevel2%5D%5Blevel3%5D=hello`);
+    expect(result1).toBe(`filters%5Blevel1%5D%5Blevel2%5D%5Blevel3%5D=hello`);
   });
   test("explode:true / nest value", () => {
     const result1 = QueryParameter.generate("filters", {
@@ -23,6 +23,6 @@ describe("QueryParameter - style:deepObject", () => {
       style: "deepObject",
       explode: true,
     });
-    expect(result1?.toString()).toBe(`filters%5Blevel1%5D%5Blevel2%5D%5Blevel3%5D=hello&filters%5Blevel1%5D%5Blevel2-1%5D%5Blevel3-1%5D=world`);
+    expect(result1).toBe(`filters%5Blevel1%5D%5Blevel2%5D%5Blevel3%5D=hello&filters%5Blevel1%5D%5Blevel2-1%5D%5Blevel3-1%5D=world`);
   });
 });
