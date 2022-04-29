@@ -90,7 +90,7 @@ describe("QueryParameter - style:spaceDelimited", () => {
       style: "spaceDelimited",
       explode: false,
     });
-    expect(result1?.toString()).toBe("color=blue+black+brown");
+    expect(result1?.toString()).toBe("color=blue%20black%20brown");
   });
   test("explode:false value:object", () => {
     const result1 = QueryParameter.generateByURLSearchParams("color", {
@@ -102,7 +102,7 @@ describe("QueryParameter - style:spaceDelimited", () => {
       style: "spaceDelimited",
       explode: false,
     });
-    expect(result1?.toString()).toBe("color=R+100+G+200+B+150");
+    expect(result1?.toString()).toBe("color=R%20100%20G%20200%20B%20150");
   });
 });
 
