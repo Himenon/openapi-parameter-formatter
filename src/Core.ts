@@ -110,6 +110,10 @@ export const generateFormParamterAsURLSearchParams = (key: string | number, para
   return instance;
 };
 
+/**
+ * If you want to change the encoding of space to "+", use the genericSpaceDelimitedAsURLSearchParams.
+ * @see https://stackoverflow.com/questions/1634271/url-encoding-the-space-character-or-20
+ */
 export const generateSpaceDelimited = (key: string | number, params: ParameterOfSpaceDelimited): string | undefined => {
   return generateSpaceDelimitedAsURLSearchParams(key, params)?.toString().replace(/\+/g, "%20");
 };
