@@ -111,7 +111,7 @@ export const generateFormParamterAsURLSearchParams = (key: string | number, para
 };
 
 export const generateSpaceDelimited = (key: string | number, params: ParameterOfSpaceDelimited): string | undefined => {
-  return generateSpaceDelimitedAsURLSearchParams(key, params)?.toString();
+  return generateSpaceDelimitedAsURLSearchParams(key, params)?.toString().replace(/\+/g, "%20");
 };
 
 export const generateSpaceDelimitedAsURLSearchParams = (
