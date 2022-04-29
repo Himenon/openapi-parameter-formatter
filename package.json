@@ -44,7 +44,7 @@
     "release:npm:registry": "pnpm publish",
     "test": "run-s test:depcruise test:jest",
     "test:depcruise": "depcruise --validate .dependency-cruiser.js src",
-    "test:jest": "jest -c ./jest.config.js",
+    "test:jest": "jest -c ./jest.config.js --collect-coverage",
     "ts": "ts-node -P tsconfig.build.json"
   },
   "simple-git-hooks": {

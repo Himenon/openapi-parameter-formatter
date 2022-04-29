@@ -55,7 +55,7 @@ describe("CookieParameter - style:form", () => {
       style: "form",
       explode: true,
     });
-    expect(result).toBe("color=blue;color=black;color=brown");
+    expect(result).toBe("color=blue&color=black&color=brown");
   });
   test("explode:false value:object", () => {
     const result1 = CookieParameter.generate("color", {
@@ -79,6 +79,6 @@ describe("CookieParameter - style:form", () => {
       style: "form",
       explode: true,
     });
-    expect(result1).toBe("R=100;G=200;B=150");
+    expect(result1).toBe("R=100&G=200&B=150");
   });
 });
