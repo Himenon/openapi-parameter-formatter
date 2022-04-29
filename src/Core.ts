@@ -70,44 +70,44 @@ export const generateFormParamter = (key: string | number, params: ParameterOfFo
 };
 
 export const generateFormParamterAsURLSearchParams = (key: string | number, params: ParameterOfForm): URLSearchParams => {
-  const queryParams = new URLSearchParams();
+  const instance = new URLSearchParams();
   if (Guard.isEmpty(params.value)) {
-    queryParams.append(key.toString(), "");
-    return queryParams;
+    instance.append(key.toString(), "");
+    return instance;
   }
 
   if (Guard.isPrimitive(params.value)) {
-    queryParams.append(key.toString(), params.value?.toString() ?? "");
-    return queryParams;
+    instance.append(key.toString(), params.value?.toString() ?? "");
+    return instance;
   }
 
   if (Guard.isArray(params.value)) {
     if (params.explode) {
       params.value.map(item => {
-        queryParams.append(key.toString(), item.toString());
+        instance.append(key.toString(), item.toString());
       });
     } else {
-      queryParams.append(key.toString(), params.value.join(","));
+      instance.append(key.toString(), params.value.join(","));
     }
-    return queryParams;
+    return instance;
   }
 
   if (Guard.isObject(params.value)) {
     if (params.explode) {
       Object.entries(params.value).map(([k, v]) => {
-        queryParams.append(k.toString(), v.toString());
+        instance.append(k.toString(), v.toString());
       });
     } else {
       const value = Object.entries(params.value)
         .map(([k, v]) => `${k},${v}`)
         .join(",");
-      queryParams.append(key.toString(), value);
+      instance.append(key.toString(), value);
     }
-    return queryParams;
+    return instance;
   }
 
-  queryParams.append(key.toString(), "");
-  return queryParams;
+  instance.append(key.toString(), "");
+  return instance;
 };
 
 export const generateSpaceDelimited = (key: string | number, params: ParameterOfSpaceDelimited): string | undefined => {
@@ -118,18 +118,18 @@ export const generateSpaceDelimitedAsURLSearchParams = (
   key: string | number,
   params: ParameterOfSpaceDelimited,
 ): URLSearchParams | undefined => {
-  const queryParams = new URLSearchParams();
+  const instance = new URLSearchParams();
   if (Guard.isArray(params.value)) {
-    queryParams.append(key.toString(), params.value.join(" "));
-    return queryParams;
+    instance.append(key.toString(), params.value.join(" "));
+    return instance;
   }
 
   if (Guard.isObject(params.value)) {
     const value = Object.entries(params.value)
       .map(([k, v]) => `${k} ${v}`)
       .join(" ");
-    queryParams.append(key.toString(), value);
-    return queryParams;
+    instance.append(key.toString(), value);
+    return instance;
   }
 
   return undefined;
@@ -143,18 +143,18 @@ export const generatePipeDelimitedParameterAsURLSearchParams = (
   key: string | number,
   params: ParameterOfPipeDelimited,
 ): URLSearchParams | undefined => {
-  const queryParams = new URLSearchParams();
+  const instance = new URLSearchParams();
   if (Guard.isArray(params.value)) {
-    queryParams.append(key.toString(), params.value.join("|"));
-    return queryParams;
+    instance.append(key.toString(), params.value.join("|"));
+    return instance;
   }
 
   if (Guard.isObject(params.value)) {
     const value = Object.entries(params.value)
       .map(([k, v]) => `${k}|${v}`)
       .join("|");
-    queryParams.append(key.toString(), value);
-    return queryParams;
+    instance.append(key.toString(), value);
+    return instance;
   }
 
   return undefined;
