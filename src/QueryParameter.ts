@@ -19,7 +19,7 @@ export const generate = (key: string | number, params: Parameter): string | unde
   return undefined;
 };
 
-export const generateAsURLSearchParams = (key: string | number, params: Parameter): URLSearchParams | undefined => {
+export const generateByURLSearchParams = (key: string | number, params: Parameter): URLSearchParams | undefined => {
   if (params.style === "form") {
     return Core.generateFormParamterAsURLSearchParams(key, params);
   }
