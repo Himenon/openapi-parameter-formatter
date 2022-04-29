@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.1"></a>
+
+## 0.3.1 (2022-04-29)
+
+### Documentation
+
+- update readme ([#13](https://github.com/Himenon/openapi-parameter-formatter/issues/13)) ([ff1da55](https://github.com/Himenon/openapi-parameter-formatter/commit/ff1da55))
+
 <a name="0.3.0"></a>
 
 # 0.3.0 (2022-04-29)
