@@ -45,7 +45,7 @@ export const generateFormParamterForCookie = (key: string | number, params: Para
   }
   if (Guard.isArray(params.value)) {
     if (params.explode) {
-      return params.value.map(item => `${key}=${item}`).join("&");
+      return params.value.map((item) => `${key}=${item}`).join("&");
     } else {
       return `${key}=${params.value.join(",")}`;
     }
@@ -83,7 +83,7 @@ export const generateFormParamterAsURLSearchParams = (key: string | number, para
 
   if (Guard.isArray(params.value)) {
     if (params.explode) {
-      params.value.map(item => {
+      params.value.map((item) => {
         instance.append(key.toString(), item.toString());
       });
     } else {
@@ -180,7 +180,7 @@ export const generateDeepObjectParameterAsURLSearchParams = (
   Object.entries(flatObject).map(([dotKeyName, primitiveValue]) => {
     const nestedKey = dotKeyName
       .split(".")
-      .map(k1 => `[${k1}]`)
+      .map((k1) => `[${k1}]`)
       .join("");
     queryParams.append(`${key}${nestedKey}`, primitiveValue?.toString() ?? "");
   });
@@ -196,7 +196,7 @@ export const generateFromMatrix = (key: string | number, params: ParameterOfMatr
   }
   if (Guard.isArray(params.value)) {
     if (params.explode) {
-      return ";" + params.value.map(v => `${key}=${v}`).join(";");
+      return ";" + params.value.map((v) => `${key}=${v}`).join(";");
     } else {
       return `;${key}=${params.value.join(",")}`;
     }

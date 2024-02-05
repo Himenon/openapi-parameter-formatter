@@ -36,7 +36,7 @@ export const isPrimitive = (value: any): value is PrimitiveType => {
   if (!value) {
     return false;
   }
-  return [isUndefined, isBoolean, isNumber, isString, isBigInt].some(validate => validate(value));
+  return [isUndefined, isBoolean, isNumber, isString, isBigInt].some((validate) => validate(value));
 };
 
 export const isObject = (value: any): value is ObjectType => {
