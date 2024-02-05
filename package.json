@@ -25,14 +25,14 @@
   },
   "sideEffects": false,
   "type": "module",
-  "main": "lib/$cjs/index.js",
-  "module": "lib/$esm/index.js",
-  "types": "lib/$types/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "directories": {
-    "lib": "lib"
+    "dist": "dist"
   },
   "files": [
-    "lib",
+    "dist",
     "package.json"
   ],
   "scripts": {
