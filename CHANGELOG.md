@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.0.0"></a>
+# 2.0.0 (2024-02-05)
+
+
+### Features
+
+* support esmodule ([#14](https://github.com/Himenon/openapi-parameter-formatter/issues/14)) ([ca802a9](https://github.com/Himenon/openapi-parameter-formatter/commit/ca802a9))
+
+
+### BREAKING CHANGES
+
+* use esmodule
+
+
+
+
+
 <a name="0.3.1"></a>
 
 ## 0.3.1 (2022-04-29)
