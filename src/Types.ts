@@ -3,8 +3,8 @@ export type UndefinedType = undefined;
 export type BigIntType = bigint;
 export type SymbolType = symbol;
 export type PrimitiveType = string | number | boolean | NullType | UndefinedType | BigIntType;
-export type ObjectType = { [key: string]: unknown };
-export type ArrayType = unknown[];
+export type ObjectType = { [key: string]: string | number | boolean };
+export type ArrayType = (string | number | boolean)[];
 
 export interface ParameterOfMatrix {
   value: PrimitiveType | ArrayType | ObjectType;
