@@ -1,3 +1,4 @@
+import { describe, expect, test } from "vitest";
 import * as QueryParameter from "../QueryParameter";
 
 describe("QueryParameter - style:deepObject", () => {

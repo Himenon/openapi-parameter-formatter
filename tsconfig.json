@@ -11,10 +11,14 @@
     "noUnusedParameters": false,
     "skipLibCheck": true,
     "sourceMap": false,
-    "target": "es2019",
-    "lib": ["dom", "es2019"],
+    "target": "es2022",
+    "lib": ["dom", "es2023"],
     "rootDir": ".",
     "outDir": "lib",
     "strict": true
-  }
+  },
+  "ts-node": {
+    "esm": true,
+    "swc": true,
+  },
 }
