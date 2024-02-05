@@ -2,7 +2,6 @@
   "name": "@himenon/openapi-parameter-formatter",
   "version": "1.0.0",
   "description": "Serializes OpenAPI parameter objects.",
-  "type": "module",
   "keywords": [
     "serialize-parameter",
     "query parameter",
@@ -25,6 +24,7 @@
     "url": "https://github.com/Himenon"
   },
   "sideEffects": false,
+  "type": "module",
   "main": "lib/$cjs/index.js",
   "module": "lib/$esm/index.js",
   "types": "lib/$types/index.d.ts",
@@ -56,12 +56,13 @@
       "biome format --no-errors-on-unmatched --write"
     ]
   },
+  "dependencies": {
+    "flat": "6.0.1"
+  },
   "devDependencies": {
     "@biomejs/biome": "^1.5.3",
     "@swc/core": "^1.3.107",
     "@types/node": "20.11.16",
-    "@typescript-eslint/eslint-plugin": "6.20.0",
-    "@typescript-eslint/parser": "6.20.0",
     "conventional-changelog-angular-all": "1.7.0",
     "cross-env": "^7.0.3",
     "lerna": "8.0.2",
@@ -73,9 +74,6 @@
     "tsup": "^8.0.1",
     "typescript": "5.3.3",
     "vitest": "^1.2.2"
-  },
-  "dependencies": {
-    "flat": "6.0.1"
   },
   "engines": {
     "node": ">=20",
