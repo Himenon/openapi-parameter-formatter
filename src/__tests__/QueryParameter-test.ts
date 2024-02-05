@@ -1,4 +1,4 @@
-import { describe, expect, text } from "vitest";
+import { describe, expect, test } from "vitest";
 import * as QueryParameter from "../QueryParameter";
 
 describe("QueryParameter - style:form", () => {
@@ -153,7 +153,7 @@ describe("QueryParameter - style:undefined", () => {
         G: 200,
         B: 150,
       },
-      style: "invalid" as any,
+      style: "invalid" as unknown,
       explode: true,
     });
     expect(result1).toBeUndefined();

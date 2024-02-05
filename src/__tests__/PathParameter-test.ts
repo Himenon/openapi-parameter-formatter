@@ -1,4 +1,4 @@
-import { describe, expect, text } from "vitest";
+import { describe, expect, test } from "vitest";
 import * as PathParameter from "../PathParameter";
 
 describe("PathParameter - style:simple", () => {
