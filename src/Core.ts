@@ -10,7 +10,7 @@ import {
   ObjectType,
 } from "./Types";
 import * as Guard from "./Guard";
-import flatten from "flat";
+import { flatten } from "flat";
 
 /**
  * @see https://tools.ietf.org/html/rfc6570#section-3.2.2
