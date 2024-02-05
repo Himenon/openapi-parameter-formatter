@@ -153,7 +153,7 @@ describe("QueryParameter - style:undefined", () => {
         G: 200,
         B: 150,
       },
-      style: "invalid" as unknown,
+      style: "invalid" as "form",
       explode: true,
     });
     expect(result1).toBeUndefined();
