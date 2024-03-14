@@ -27,6 +27,32 @@
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "exports": {
+    ".": {
+      "browser": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "node": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "browser": {
+        "types": "./dist/*.d.ts",
+        "default": "./dist/*.js"
+      },
+      "node": {
+        "types": "./dist/*.d.cts",
+        "default": "./dist/*.cjs"
+      },
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    }
+  },
   "types": "dist/index.d.ts",
   "directories": {
     "dist": "dist"
@@ -55,9 +81,6 @@
     "*.{js,jsx,json,yml,yaml,html,md,ts,tsx}": [
       "biome format --no-errors-on-unmatched --write"
     ]
-  },
-  "dependencies": {
-    "flat": "6.0.1"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.5.3",
