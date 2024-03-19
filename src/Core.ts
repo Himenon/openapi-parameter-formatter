@@ -10,7 +10,6 @@ import {
   ObjectType,
 } from "./Types";
 import * as Guard from "./Guard";
-import { flatten } from "flat";
 
 /**
  * @see https://tools.ietf.org/html/rfc6570#section-3.2.2
@@ -243,3 +242,19 @@ export const generateFromLabel = (key: string | number, params: ParameterOfLabel
   }
   return ".";
 };
+
+function flatten<T extends object, R extends Record<string, unknown>>(obj: T): R {
+  function recursive(path: string[], data: object, flatted: Record<string, unknown>) {
+    for (const [key, value] of Object.entries(data)) {
+      const currentPath = [...path, key];
+      if (Guard.isObject(value)) {
+        recursive(currentPath, value, flatted);
+      } else {
+        flatted[currentPath.join(".")] = value;
+      }
+    }
+  }
+  const flatted = {} as R;
+  recursive([], obj, flatted);
+  return flatted;
+}
