@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.1.0"></a>
+# 2.1.0 (2024-03-19)
+
+
+### Features
+
+* support esm&cjs dual module systems ([#15](https://github.com/Himenon/openapi-parameter-formatter/issues/15)) ([1025222](https://github.com/Himenon/openapi-parameter-formatter/commit/1025222))
+
+
+
+
+
 <a name="2.0.0"></a>
 # 2.0.0 (2024-02-05)
 
