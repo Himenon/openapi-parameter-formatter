@@ -74,7 +74,7 @@
     "lint": "oxlint",
     "format": "oxfmt .",
     "validate": "oxfmt --check",
-    "test:vitest": "vitest"
+    "test:vitest": "vitest run"
   },
   "devDependencies": {
     "@swc/core": "^1.15.33",
