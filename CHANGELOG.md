@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.1.0"></a>
+# 3.1.0 (2026-06-01)
+
+
+### Features
+
+* update dependencies & node >= v24 ([#16](https://github.com/Himenon/openapi-parameter-formatter/issues/16)) ([2736701](https://github.com/Himenon/openapi-parameter-formatter/commit/2736701))
+
+
+
+
+
 <a name="2.1.0"></a>
 
 # 2.1.0 (2024-03-19)
