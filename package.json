@@ -1,21 +1,17 @@
 {
   "name": "@himenon/openapi-parameter-formatter",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "Serializes OpenAPI parameter objects.",
   "keywords": [
-    "serialize-parameter",
-    "query parameter",
-    "path parameter",
     "cookie parameter",
-    "header parameter"
+    "header parameter",
+    "path parameter",
+    "query parameter",
+    "serialize-parameter"
   ],
   "homepage": "https://github.com/Himenon/openapi-parameter-formatter#readme",
   "bugs": {
     "url": "https://github.com/Himenon/openapi-parameter-formatter/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:Himenon/openapi-parameter-formatter.git"
   },
   "license": "MIT",
   "author": {
@@ -23,10 +19,22 @@
     "email": "k.himeno314@gmail.com",
     "url": "https://github.com/Himenon"
   },
-  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Himenon/openapi-parameter-formatter.git"
+  },
+  "directories": {
+    "dist": "dist"
+  },
+  "files": [
+    "dist",
+    "package.json"
+  ],
   "type": "module",
+  "sideEffects": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "browser": {
@@ -53,14 +61,9 @@
       "default": "./dist/*.js"
     }
   },
-  "types": "dist/index.d.ts",
-  "directories": {
-    "dist": "dist"
+  "publishConfig": {
+    "access": "public"
   },
-  "files": [
-    "dist",
-    "package.json"
-  ],
   "scripts": {
     "build": "tsup src/*.ts",
     "clean": "rimraf dist",
@@ -68,41 +71,29 @@
     "release:github:registry": "pnpm publish --registry https://npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}",
     "release:npm:registry": "pnpm publish",
     "test": "run-p test:vitest lint",
-    "lint": "biome lint .",
-    "format": "biome format --write .",
-    "validate": "biome check --apply .",
-    "test:vitest": "vitest",
-    "ts": "node --no-warnings=ExperimentalWarning --experimental-specifier-resolution=node --loader ts-node/esm"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,json,yml,yaml,html,md,ts,tsx}": [
-      "biome format --no-errors-on-unmatched --write"
-    ]
+    "lint": "oxlint",
+    "format": "oxfmt .",
+    "validate": "oxfmt --check",
+    "test:vitest": "vitest run"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.5.3",
-    "@swc/core": "^1.3.107",
-    "@types/node": "20.11.16",
+    "@swc/core": "^1.15.33",
+    "@types/node": "25.8.0",
     "conventional-changelog-angular-all": "1.7.0",
-    "cross-env": "^7.0.3",
-    "lerna": "8.0.2",
-    "lint-staged": "15.2.1",
+    "cross-env": "^10.1.0",
+    "lefthook": "^2.1.6",
+    "lerna": "9.0.7",
+    "lint-staged": "17.0.5",
     "npm-run-all": "4.1.5",
-    "rimraf": "^5.0.5",
-    "simple-git-hooks": "^2.9.0",
-    "ts-node": "^10.9.2",
-    "tsup": "^8.0.1",
-    "typescript": "5.3.3",
-    "vitest": "^1.2.2"
+    "oxfmt": "^0.49.0",
+    "oxlint": "^1.64.0",
+    "rimraf": "^6.1.3",
+    "tsup": "^8.5.1",
+    "typescript": "6.0.3",
+    "vitest": "^4.1.6"
   },
   "engines": {
-    "node": ">=20",
-    "pnpm": ">=8"
+    "node": ">=24"
   },
-  "publishConfig": {
-    "access": "public"
-  }
+  "packageManager": "pnpm@10.27.0"
 }

@@ -117,10 +117,7 @@ export const generateSpaceDelimited = (key: string | number, params: ParameterOf
   return generateSpaceDelimitedAsURLSearchParams(key, params)?.toString().replace(/\+/g, "%20");
 };
 
-export const generateSpaceDelimitedAsURLSearchParams = (
-  key: string | number,
-  params: ParameterOfSpaceDelimited,
-): URLSearchParams | undefined => {
+export const generateSpaceDelimitedAsURLSearchParams = (key: string | number, params: ParameterOfSpaceDelimited): URLSearchParams | undefined => {
   const instance = new URLSearchParams();
   if (Guard.isArray(params.value)) {
     instance.append(key.toString(), params.value.join(" "));
@@ -142,10 +139,7 @@ export const generatePipeDelimitedParameter = (key: string | number, params: Par
   return generatePipeDelimitedParameterAsURLSearchParams(key, params)?.toString();
 };
 
-export const generatePipeDelimitedParameterAsURLSearchParams = (
-  key: string | number,
-  params: ParameterOfPipeDelimited,
-): URLSearchParams | undefined => {
+export const generatePipeDelimitedParameterAsURLSearchParams = (key: string | number, params: ParameterOfPipeDelimited): URLSearchParams | undefined => {
   const instance = new URLSearchParams();
   if (Guard.isArray(params.value)) {
     instance.append(key.toString(), params.value.join("|"));
@@ -167,10 +161,7 @@ export const generateDeepObjectParameter = (key: string | number, params: Parame
   return generateDeepObjectParameterAsURLSearchParams(key, params)?.toString();
 };
 
-export const generateDeepObjectParameterAsURLSearchParams = (
-  key: string | number,
-  params: ParameterOfDeepObject,
-): URLSearchParams | undefined => {
+export const generateDeepObjectParameterAsURLSearchParams = (key: string | number, params: ParameterOfDeepObject): URLSearchParams | undefined => {
   if (!Guard.isObject(params.value)) {
     return undefined;
   }
